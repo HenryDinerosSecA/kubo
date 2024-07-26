@@ -1,0 +1,402 @@
+:root {
+    --universal-white: #FFEBD6;
+    --universal-black: #070600;
+    --morning-color: #5E7E82;
+    --afternoon-color: #B6663E;
+    --night-color: #67515A;
+}
+
+body, button, input, select, textarea {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+
+body {
+    transition: background-color 0.5s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--universal-black);
+}
+
+.navbar {
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#logo {
+    font-size: 2.7rem;
+    font-weight:bolder;
+    color: var(--universal-white);
+}
+
+#landingPrompt {
+    margin-top: 1rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#currentBookTitle {
+    margin-bottom: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.content-frame {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin: 1rem;
+    background-color: var(--universal-white);
+}
+
+#booksView, #pagesView {
+    flex-grow: 1;
+}
+
+#booksView .card {
+    cursor: pointer;
+    transition: transform 0.2s;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#booksView .card:hover {
+    transform: scale(1.05);
+}
+
+#sideNav {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    padding-right: 1rem;
+    background-color: var(--universal-white);
+    color: inherit;
+    padding: 1rem;
+    border-radius: 0 20px 20px 0;
+}
+
+#pageList .list-group-item {
+    cursor: pointer;
+    background-color: var(--universal-white);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 1rem;
+    transition: box-shadow 0.3s ease;
+    border: none;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#pageList .list-group-item:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.page-details {
+    display: none;
+    margin-top: 0.5rem;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.page-content {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.book-card {
+    width: 200px;
+    height: 250px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.book-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+.book-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.book-title {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    color: var(--universal-white);
+}
+
+.btn {
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#newPageButton {
+    margin-bottom: 1rem;
+}
+
+#currentBookTitle {
+    margin-bottom: 1rem;
+}
+
+/* Time-based themes */
+.morning {
+    background-color: var(--morning-color);
+}
+
+.morning .navbar, .morning .book-card {
+    background-color: var(--morning-color);
+    color: var(--universal-white);
+}
+
+.morning .btn-primary, .morning .btn-secondary,
+.morning #newPageButton, .morning #signInButton, 
+.morning #guestButton, .morning .modal .btn-primary {
+    background-color: var(--morning-color);
+    color: var(--universal-white);
+}
+
+.morning .btn-primary:hover, .morning .btn-secondary:hover,
+.morning #newPageButton:hover, .morning #signInButton:hover, 
+.morning #guestButton:hover, .morning .modal .btn-primary:hover {
+    background-color: var(--universal-white);
+    color: var(--morning-color);
+}
+
+.morning .edit-book-btn, .morning .book-card .btn-primary,
+.morning #authButton {
+    background-color: var(--universal-white);
+    color: var(--morning-color);
+}
+
+.morning .edit-book-btn:hover, .morning .book-card .btn-primary:hover,
+.morning #authButton:hover {
+    background-color: var(--morning-color);
+    color: var(--universal-white);
+}
+
+.morning #bookList .nav-link {
+    color: var(--morning-color);
+}
+
+.morning #bookList .nav-link.active {
+    background-color: var(--morning-color);
+    color: var(--universal-white);
+}
+
+.afternoon {
+    background-color: var(--afternoon-color);
+}
+
+.afternoon .navbar, .afternoon .book-card {
+    background-color: var(--afternoon-color);
+    color: var(--universal-white);
+}
+
+.afternoon .btn-primary, .afternoon .btn-secondary,
+.afternoon #newPageButton, .afternoon #signInButton, 
+.afternoon #guestButton, .afternoon .modal .btn-primary {
+    background-color: var(--afternoon-color);
+    color: var(--universal-white);
+}
+
+.afternoon .btn-primary:hover, .afternoon .btn-secondary:hover,
+.afternoon #newPageButton:hover, .afternoon #signInButton:hover, 
+.afternoon #guestButton:hover, .afternoon .modal .btn-primary:hover {
+    background-color: var(--universal-white);
+    color: var(--afternoon-color);
+}
+
+.afternoon .edit-book-btn, .afternoon .book-card .btn-primary,
+.afternoon #authButton {
+    background-color: var(--universal-white);
+    color: var(--afternoon-color);
+}
+
+.afternoon .edit-book-btn:hover, .afternoon .book-card .btn-primary:hover,
+.afternoon #authButton:hover {
+    background-color: var(--afternoon-color);
+    color: var(--universal-white);
+}
+
+.afternoon #bookList .nav-link {
+    color: var(--afternoon-color);
+}
+
+.afternoon #bookList .nav-link.active {
+    background-color: var(--afternoon-color);
+    color: var(--universal-white);
+}
+
+.night {
+    background-color: var(--night-color);
+}
+
+.night .navbar, .night .book-card {
+    background-color: var(--night-color);
+    color: var(--universal-white);
+}
+
+.night .btn-primary, .night .btn-secondary,
+.night #newPageButton, .night #signInButton, 
+.night #guestButton, .night .modal .btn-primary {
+    background-color: var(--night-color);
+    color: var(--universal-white);
+}
+
+.night .btn-primary:hover, .night .btn-secondary:hover,
+.night #newPageButton:hover, .night #signInButton:hover, 
+.night #guestButton:hover, .night .modal .btn-primary:hover {
+    background-color: var(--universal-white);
+    color: var(--night-color);
+}
+
+.night .edit-book-btn, .night .book-card .btn-primary,
+.night #authButton {
+    background-color: var(--universal-white);
+    color: var(--night-color);
+}
+
+.night .edit-book-btn:hover, .night .book-card .btn-primary:hover,
+.night #authButton:hover {
+    background-color: var(--night-color);
+    color: var(--universal-white);
+}
+
+.night #bookList .nav-link {
+    color: var(--night-color);
+}
+
+.night #bookList .nav-link.active {
+    background-color: var(--night-color);
+    color: var(--universal-white);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: var(--universal-white);
+}
+
+#homeButton, #archiveLink {
+    margin-bottom: 0.5rem;
+}
+
+#bookList .nav-link {
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+}
+
+#bookList .nav-link.active {
+    font-weight: bold;
+}
+
+.modal-content {
+    background-color: var(--universal-white);
+    color: var(--universal-black);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .content-frame {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .book-card {
+        width: 150px;
+        height: 200px;
+    }
+
+    .book-image {
+        height: 150px;
+    }
+
+    #sideNav {
+        position: fixed;
+        top: 56px;
+        left: -250px;
+        width: 250px;
+        height: calc(100vh - 56px);
+        z-index: 1000;
+        background-color: var(--universal-white);
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #sideNav.show {
+        left: 0;
+    }
+
+    #toggleSidebar {
+        display: block;
+        position: fixed;
+        top: 70px;
+        left: 10px;
+         z-index: 1001;
+        display: none;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+}
+
+/* Dropdown menu for mobile */
+.dropdown-menu {
+    background-color: var(--universal-white);
+}
+
+.dropdown-item {
+    color: inherit;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.content-frame, #booksView, #pagesView, .book-card, #sideNav {
+    transition: all 0.3s ease-in-out;
+}
+
+.book-card.expanding {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    z-index: 1000;
+}
